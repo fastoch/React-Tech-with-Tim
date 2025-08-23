@@ -1,4 +1,4 @@
-import './css/MovieCard.css'  
+import '../css/MovieCard.css'  
 
 const MovieCard = ({movie}) => {
   const onLike = () => {
