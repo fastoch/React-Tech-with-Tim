@@ -41,6 +41,13 @@ This is where our React code will be injected into the page.
 In this file, we have a `<div>` with an id of `root`.  
 All the React code that we're about to write is going to be "thrown" into this `<div>`.  
 
+```html
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+```
+
 React uses what's called a **virtual DOM** to handle all of the HTML that is rendered to the page.    
 
 ## The `src` folder
@@ -50,12 +57,28 @@ This is where we're going to write our different components.
 ## The `main.jsx` file
 
 This is the **entry point** of our application, where the injection of our React code will happen.  
+It selects the **root** `div` from the `index.html` file, and injects the `<App />` component into it.  
 
+```jsx
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+```
 
 ## The `App.jsx` file
 
-This is our main component, the parent of all the components we're about to write.  
+This is our main component, the **parent** of all the components we're about to write.  
+
+Every component is a function that has 2 main parts:
+- the JavaScript (or TypeScript) part
+- the JSX (or TSX) part, which looks a lot like HTML
+
+
 
 
 ---
-@12/99
+@14/99
