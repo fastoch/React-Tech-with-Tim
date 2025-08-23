@@ -109,5 +109,32 @@ return (
 ) 
 ```
 
+# Props
+
+We can pass props (properties) as parameters to our functional components.  
+Like the `textContent` prop in this example:
+```jsx
+const Text = ({ textContent }) => {
+  return (
+    <div>
+      <p>{textContent}</p>
+    </div>
+  )
+}
+```
+
+Then, we can use these props when calling the `Text` component inside the `App` component:
+```jsx
+function App() {
+
+  return (
+    <>
+      <Text textContent="Hello World"/>
+      <Text textContent="Bye World"/>
+    </>
+  )
+}
+```
+
 ---
-@17/99
+@19/99

@@ -5,8 +5,17 @@ function App() {
 
   return (
     <>
-      <div></div>
+      <Text textContent="Hello World"/>
+      <Text textContent="Bye World"/>
     </>
+  )
+}
+
+const Text = ({ textContent }) => {
+  return (
+    <div>
+      <p>{textContent}</p>
+    </div>
   )
 }
 
