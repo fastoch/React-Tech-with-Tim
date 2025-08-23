@@ -77,8 +77,37 @@ Every component is a function that has 2 main parts:
 - the JavaScript (or TypeScript) part
 - the JSX (or TSX) part, which looks a lot like HTML
 
+A component name starts with a capital letter.   
+And one component cannot return two **sibling** elements, like 2 divs being on the same level.  
 
+The trick to return multiple sibling elements is to use something called a **fragment**.  
+Which is an **empty HTML tag** that looks like this:
+```jsx
+function App() {
 
+  return (
+    <>
+      <div></div>
+      <div></div>
+    </>
+  )
+}
+
+export default App
+```
+
+However, a component can return multiple elements as long as it has only one parent element:
+```jsx
+return (
+  <div>
+    <div>
+      <p></p>
+    </div>
+    <h2></h2>
+    <p></p>
+  </div>
+) 
+```
 
 ---
-@14/99
+@17/99
