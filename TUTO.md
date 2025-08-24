@@ -174,9 +174,9 @@ function App() {
   return (
     <>
       {movieNumber === 1 ? (
-        <MovieCard movie={{title: "The Matrix", release_date: "1999", url: ""}} /> 
+        <MovieCard movie={{title: "The Matrix", release_date: "1999", url: null}} /> 
       ) : (
-        <MovieCard movie={{title: "Back to the Future", release_date: "1985", url: ""}} />
+        <MovieCard movie={{title: "Back to the Future", release_date: "1985", url: null}} />
       )}
     </>
   )
@@ -207,6 +207,44 @@ Inside this new folder, create 2 new files called `Home.jsx` and `Favorites.jsx`
 
 We'll have an array of movie objects, and we'll render them dynamically.  
 We'll render one movie card for each movie in the array.  
+
+```jsx
+import MovieCard from "../components/MovieCard"
+
+const Home = () => {
+  const movies = [
+    {id: 1, title: "The Matrix", release_date: "1999", url: null},
+    {id: 2, title: "Back to the Future", release_date: "1985", url: null},
+    {id: 3, title: "The Shawshank Redemption", release_date: "1994", url: null},
+    {id: 4, title: "The Godfather", release_date: "1972", url: null},
+    {id: 5, title: "The Dark Knight", release_date: "2008", url: null},
+    {id: 6, title: "Pulp Fiction", release_date: "1994", url: null},
+    {id: 7, title: "Forrest Gump", release_date: "1994", url: null},
+    {id: 8, title: "Inception", release_date: "2010", url: null},
+  ]
+
+  return (
+    <div className="home">
+      <div className="movies-grid">
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default Home
+```
+
+The `.map()` function iterates over the `movies` array (which contains movie objects), 
+so we can display the corresponding `MovieCard` component for each movie.  
+
+We're adding a `key` property to each `MovieCard` component because React needs to know 
+which component to update based on the interactions that happen with the Web page.  
+
+We need to mark every single component with a unique identifier so that React can handle
+all of the **state** updates that will occur.  
 
 
 
