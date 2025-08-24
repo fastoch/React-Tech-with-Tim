@@ -165,6 +165,40 @@ Here, we made a **default** export at the end of MovieCard.jsx: `export default 
 But if we had made a **named** export such as `export const MovieCard = () => {}`, then 
 the import would look like this: `import { MovieCard } from './components/MovieCard'`  
 
+## Conditional Rendering
+
+With a ternary operator, we render something depending on a condition:
+```jsx
+function App() {
+  const movieNumber = 1
+
+  return (
+    <>
+      {movieNumber === 1 ? (
+        <MovieCard movie={{title: "The Matrix", release_date: "1999", url: ""}} /> 
+      ) : (
+        <MovieCard movie={{title: "Back to the Future", release_date: "1985", url: ""}} />
+      )}
+    </>
+  )
+}
+
+export default App
+```
+If movieNumber is equal to 1, it will render The Matrix movie card.  
+Otherwise, it will render Back to the Future movie card.  
+
+---
+
+We can also use "**short-circuiting**" with th `&&` operator if we don't need the else statement:
+```jsx
+return (
+    <>
+      {movieNumber === 1 && <MovieCard movie={{title: "The Matrix", release_date: "1999", url: ""}} />}
+    </>
+  )
+```
+
 ## MovieList
 
 See `MovieList.jsx`  
@@ -172,4 +206,4 @@ See `MovieList.jsx`
 
 
 ---
-@27/99
+@32/99
