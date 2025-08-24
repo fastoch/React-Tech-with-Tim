@@ -11,11 +11,15 @@ const Home = () => {
     {id: 7, title: "Forrest Gump", release_date: "1994", url: null},
     {id: 8, title: "Inception", release_date: "2010", url: null},
   ]
+  
+  const handleSearch = (e) => {
+    e.preventDefault()
+  }
 
   return (
     <div className="home">
-      <form onSubmit={} className="search-form">
-        <input type="text" />
+      <form onSubmit={handleSearch} className="search-form">
+        <input type="text" placeholder="Search for movies..." className="search-input"/>
       </form>
       
       <div className="movies-grid">
