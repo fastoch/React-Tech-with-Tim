@@ -248,7 +248,61 @@ all of the **state** updates that will occur.
 
 ## State
 
+State is something where once it's updated, the component will change and re-render itself to 
+show the new state.  
 
+- the first thing to do is to import the `useState` hook from the `react` library
+- then we can declare our first state variable inside the component (**before** the `return` statement)
+
+```jsx
+import { useState } from 'react'
+
+const Home = () => {
+  const [searchQuery, setSearchQuery] = useState('')
+```
+
+In the above example, `searchQuery` is our state variable, and `setSearchQuery` is the **setter** function
+that will update the value held by the state variable.  
+
+The parameter we pass to `useState` is the default value for our state variable.  
+
+---
+
+Now, we can use this state variable in our `Home` component:
+```jsx
+return (
+  <div className="home">
+    <form onSubmit={handleSearch} className="search-form">
+      <input
+        type="text"
+        placeholder="Search for movies..."
+        className="search-input"
+        value={searchQuery}
+      />
+      <button type="submit" className="search-button">Search</button>
+    </form>
+```
+
+By setting the input `value` to `{searchQuery}`, we connect the component to the `searchQuery` state.  
+
+---
+
+Right now, if we save and refresh the page, you'll notice that we can't type anything in the input box.  
+That's because the `searchQuery` value is locked on an empty string for now, we're not updating the state 
+via `setSearchQuery` yet...  
+
+To solve that, we need to add an `onChange` event listener to the input box:
+```jsx
+<input
+  type="text"
+  placeholder="Search for movies..."
+  className="search-input"
+  value={searchQuery}
+  onChange={(e) => setSearchQuery(e.target.value)}
+/> 
+```
+
+Now we can type our search term in the input box!
 
 ## MovieList
 
