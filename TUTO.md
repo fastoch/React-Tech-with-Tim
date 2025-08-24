@@ -150,7 +150,7 @@ What components do we need?
 Inside the src folder, let's make a new folder called `components`.  
 This is where we'll put all the components we're going to write.  
 
-## MovieCard
+## The MovieCard component
 
 See `MovieCard.jsx`  
 
@@ -304,11 +304,38 @@ To solve that, we need to add an `onChange` event listener to the input box:
 
 Now we can type our search term in the input box!
 
-## MovieList
+## The Search button (submitting the form)
+
+Now, we can use our `searchQuery` state in the `handleQuery` method:
+```jsx
+const handleSearch = (e) => {
+  e.preventDefault()  // prevents the page from refreshing when we submit the form
+  console.log(searchQuery)  
+  setSearchQuery('')
+}
+```
+This is the method that is called when we click the submit button to search for a movie.  
+The `preventDefault` method prevents the page from refreshing when we submit the form.  
+At the end, we call the setter function to reset the `searchQuery` state to an empty string.  
+
+## Showing the movies that match our search query
+
+Inside the Home component, we need to update the div where we map on the movies array.  
+```jsx
+<div className="movies-grid">
+  {movies.map((movie) => (
+    movie.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
+    <MovieCard key={movie.id} movie={movie} />
+  ))}
+</div>
+```
+This will only show the movie card if the title matches the search query.  
+
+## The MovieList component
 
 See `MovieList.jsx`  
 
 
 
 ---
-@40/99
+@46/99

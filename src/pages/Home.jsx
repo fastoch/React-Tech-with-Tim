@@ -17,7 +17,9 @@ const Home = () => {
   ]
 
   const handleSearch = (e) => {
-    e.preventDefault()
+    e.preventDefault()  // prevents the page from refreshing when we submit the form
+    alert(`Searching for ${searchQuery}`)
+    setSearchQuery('')
   }
 
   return (
@@ -35,6 +37,7 @@ const Home = () => {
 
       <div className="movies-grid">
         {movies.map((movie) => (
+          movie.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
