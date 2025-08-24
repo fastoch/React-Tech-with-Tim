@@ -333,7 +333,8 @@ This will only show the movie card if the title matches the search query.
 
 ## Page routing
 
-
+- install React router: `npm i react-router-dom`
+- 
 
 ## The MovieList component
 
@@ -342,4 +343,4 @@ See `MovieList.jsx`
 
 
 ---
-@48/99
+@50/99
