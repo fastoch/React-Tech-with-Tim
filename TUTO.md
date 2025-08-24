@@ -246,6 +246,8 @@ which component to update based on the interactions that happen with the Web pag
 We need to mark every single component with a unique identifier so that React can handle
 all of the **state** updates that will occur.  
 
+## State
+
 
 
 ## MovieList
@@ -255,4 +257,4 @@ See `MovieList.jsx`
 
 
 ---
-@32/99
+@40/99
