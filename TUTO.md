@@ -302,7 +302,7 @@ To solve that, we need to add an `onChange` event listener to the input box:
 /> 
 ```
 
-Now we can type our search term in the input box!
+Now we can type our search term and see it displayed in the input box!
 
 ## The Search button (submitting the form)
 
@@ -331,6 +331,10 @@ Inside the Home component, we need to update the div where we map on the movies 
 ```
 This will only show the movie card if the title matches the search query.  
 
+## Page routing
+
+
+
 ## The MovieList component
 
 See `MovieList.jsx`  
@@ -338,4 +342,4 @@ See `MovieList.jsx`
 
 
 ---
-@46/99
+@48/99
