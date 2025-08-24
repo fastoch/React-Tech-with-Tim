@@ -334,7 +334,44 @@ This will only show the movie card if the title matches the search query.
 ## Page routing
 
 - install React router: `npm i react-router-dom`
-- 
+- open the `main.jsx` file, import the BrowserRouter component and wrap the App component in it:
+```jsx
+import { BrowserRouter } from 'react-router-dom'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>,
+)
+```
+- open the `App.jsx` file, and modify it as follows:
+```jsx
+import './App.css'
+import Home from './pages/Home'
+import Favorites from './pages/Favorites'
+import { Routes, Route } from 'react-router-dom'
+
+function App() {
+
+  return (
+    <main className="main-content">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/favorites" element={<Favorites />} />
+      </Routes>
+    </main>
+  )
+}
+
+export default App
+```
+
+## The Navigation Bar
+
+See `NavBar.jsx`
+
 
 ## The MovieList component
 
