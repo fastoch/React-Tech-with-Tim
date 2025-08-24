@@ -149,7 +149,6 @@ What components do we need?
 
 Inside the src folder, let's make a new folder called `components`.  
 This is where we'll put all the components we're going to write.  
-Every file in this components folder will be a component.  
 
 ## MovieCard
 
@@ -158,7 +157,7 @@ See `MovieCard.jsx`
 Once we've built our component, we need to be sure to **export** it, so it can be used in other files.  
 To use in the App component, we need to import it: `import MovieCard from './components/MovieCard'`  
 
-### Default export vs named export
+## Default export vs named export
 
 Note that the syntax of the import could be different.  
 Here, we made a **default** export at the end of MovieCard.jsx: `export default App`  
@@ -198,6 +197,18 @@ return (
     </>
   )
 ```
+
+## The `pages` folder
+
+Inside the `src` folder, let's create a new folder called `pages`.  
+Inside this new folder, create 2 new files called `Home.jsx` and `Favorites.jsx`.  
+
+## The Home page and `.map()`
+
+We'll have an array of movie objects, and we'll render them dynamically.  
+We'll render one movie card for each movie in the array.  
+
+
 
 ## MovieList
 
