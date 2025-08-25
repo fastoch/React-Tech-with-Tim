@@ -1,7 +1,6 @@
 import MovieCard from "../components/MovieCard"
 import "../css/Home.css"
 import { useState } from 'react'
-import NavBar from "../components/NavBar"
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState('')

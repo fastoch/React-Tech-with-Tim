@@ -4,7 +4,8 @@ const Favorites = () => {
   return (
     <div className='favorites-empty'>
       <h2>No favorite movies yet</h2>
-      <p>Start adding movies to your favorites and they'll show up here</p>
+      <p>Start adding movies to your favorites</p> 
+      <p>and they'll show up here</p>
     </div>
   )
 }

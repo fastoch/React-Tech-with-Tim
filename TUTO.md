@@ -371,7 +371,39 @@ export default App
 ## The Navigation Bar
 
 See `NavBar.jsx`
+Once created, we import the NavBar component in the `App.jsx` file, and we add our Navbar above the 
+`<main>` element, both the main and the Navbar being wrapped inside a div.
 
+```jsx
+import NavBar from './components/NavBar'
+
+function App() {
+
+  return (
+    <div>
+      <NavBar />
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/favorites" element={<Favorites />} />
+        </Routes>
+      </main>
+    </div>
+  )
+}
+```
+
+## CSS Styling
+
+All our CSS files will be in /src/css.  
+
+Tim's CSS files can be found here:  
+https://github.com/techwithtim/Learn-React-In-One-Project/tree/main/src/css  
+
+We can just copy Tim's files because CSS is not the purpose of this tutorial.  
+
+It's common to have a different stylesheet for each component.  
+We have App.css for App.jsx, index.css for main.jsx, Home.css for Home.jsx, and so on.  
 
 ## The MovieList component
 
@@ -380,4 +412,4 @@ See `MovieList.jsx`
 
 
 ---
-@50/99
+@60/99
