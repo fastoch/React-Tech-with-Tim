@@ -405,6 +405,21 @@ We can just copy Tim's files because CSS is not the purpose of this tutorial.
 It's common to have a different stylesheet for each component.  
 We have App.css for App.jsx, index.css for main.jsx, Home.css for Home.jsx, and so on.  
 
+## Fetching the movies from an API
+
+From our Home page, we want to display a list of movies.  
+Instead of creating that list from scratch, we want to get them from a real source.  
+
+We're going to use a publicly available API that contains a bunch of movies, 
+and we're going to grab the most popular movies and simply display them.  
+
+Then, we're going to use the Search feature from that API to search for movies and 
+to display those search results.  
+
+The API we'll use is TMDB: https://www.themoviedb.org  
+
+
+
 ## The MovieList component
 
 See `MovieList.jsx`  
