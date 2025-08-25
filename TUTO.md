@@ -418,7 +418,12 @@ to display those search results.
 
 The API we'll use is TMDB: https://www.themoviedb.org  
 
-
+- create a TMDB account
+- go to `Settings`
+- go to `API` to find your **API key**
+- in the /src folder of your project, create a new folder called `services`
+- inside this services folder, create a new file called `api.js`
+- 
 
 ## The MovieList component
 
@@ -427,4 +432,4 @@ See `MovieList.jsx`
 
 
 ---
-@60/99
+@63/99
