@@ -423,7 +423,24 @@ The API we'll use is TMDB: https://www.themoviedb.org
 - go to `API` to find your **API key**
 - in the /src folder of your project, create a new folder called `services`
 - inside this services folder, create a new file called `api.js`
-- 
+
+Inside this `api.js` file, we're going to write some functions which are going to be responsible 
+for calling our API.  
+
+It's usually a good practice to create a separate file that contains all of our API calls so 
+that we can keep all the networking operations or API-related stuff in one place and find it easily.  
+
+```js
+const API_key = "7947ca06df69ad7b5469db28cd94fa62"
+const BASE_URL = "https://api.themoviedb.org/3"
+```
+
+We will use TMDB's API for 2 things:
+- searching for movies
+- displaying popular movies
+
+So, right after the two variables, we need to declare the two functions that will allow us to perform 
+these operations: `getPopularMovies` and `searchMovies`.  
 
 ## The MovieList component
 
@@ -432,4 +449,4 @@ See `MovieList.jsx`
 
 
 ---
-@63/99
+@65/99
