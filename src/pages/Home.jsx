@@ -6,9 +6,22 @@ import { getPopularMovies, searchMovies } from '../services/api'
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [movies, setMovies] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    
+    const loadPopularMovies = async () => {
+      try { 
+        const popularMovies = await getPopularMovies()
+        setMovies(popularMovies)
+      } catch (error) {
+        console.log(error) // for debugging
+        setError("Failed to load movies...")
+      } finally {
+        setLoading(false)
+      }
+    }
+    loadPopularMovies()
   }, [])
 
   const handleSearch = (e) => {
@@ -30,12 +43,16 @@ const Home = () => {
         <button type="submit" className="search-button">Search</button>
       </form>
 
-      <div className="movies-grid">
-        {movies.map((movie) => (
-          movie.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
+      { loading ? (
+        <div className="laoding">Loading...</div> 
+      ) : ( 
+        <div className="movies-grid">
+          {movies.map((movie) => (
+            movie.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
+        </div>
+      )}
     </div>
   )
 }

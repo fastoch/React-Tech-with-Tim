@@ -484,12 +484,43 @@ In our case, we want `getPopularMovies` to run only once, when the component is 
 First, we need to import the hook: `import { useEffect } from 'react'`  
 Then, we're going to store our movies in a state: `const [movies, setMovies] = useState([])`  
 
+We will also declare a loading state (while the movie fetching happens):  
+`const [loading, setLoading] = useState(true)`  
+
+and an error state in case some error occurs:  
+`const [error, setError] = useState(null)`  
+
 After that, we can declare our `useEffect` hook.  
 The syntax is: `useEffect(() => {}, [])`  
-As you can see, useEffect has 2 parameters: a function and an array (a "dependency array").  
-The function that we pass to useEffect will be called when a change occurs int the array.  
+As you can see, useEffect has 2 parameters: a function (the "effect") and an array (a "dependency array").  
 
+The function that we pass to useEffect will be called every time a change occurs in the dependency array.  
+Since we want `getPopularMovies` to run only when the component is first rendered, we'll leave the dependency array empty.  
 
+Here's how we combine `useEffect` + `getPopularMovies` + the setter functions:
+```jsx
+useEffect(() => {
+  const loadPopularMovies = async () => {
+    try { 
+      const popularMovies = await getPopularMovies()
+      setMovies(popularMovies)
+    } catch (error) {
+      console.log(error) // for debugging
+      setError("Failed to load movies...")
+    } finally {
+      setLoading(false)
+    }
+  }
+  loadPopularMovies()
+}, [])
+```
+
+## Displaying movie posters 
+
+In the MovieCard component, we update the `<img>` element as follows:
+```jsx
+<img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+```
 
 ## The MovieList component
 
