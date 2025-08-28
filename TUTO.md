@@ -522,7 +522,5 @@ In the MovieCard component, we update the `<img>` element as follows:
 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
 ```
 
-## The MovieList component
-
-See `MovieList.jsx`  
+## Making the search field actually work
 

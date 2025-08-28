@@ -43,6 +43,8 @@ const Home = () => {
         <button type="submit" className="search-button">Search</button>
       </form>
 
+      { error && <div className="error-message">{error}</div> }
+
       { loading ? (
         <div className="laoding">Loading...</div> 
       ) : ( 
