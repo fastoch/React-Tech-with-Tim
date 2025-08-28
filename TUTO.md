@@ -442,11 +442,42 @@ We will use TMDB's API for 2 things:
 So, right after the two variables, we need to declare the two functions that will allow us to perform 
 these operations: `getPopularMovies` and `searchMovies`.  
 
+Check the `api.js` file to see how these functions are implemented.  
+
+## Back to the Home component
+
+We're going to learn a new React hook: `useEffect`, which is going to allow us to use the 2 functions we've just declared.  
+
+First, we need to import these functions:
+```jsx
+import { getPopularMovies, searchMovies } from '../services/api'}
+```
+
+Then we need to remove our static movies array and replace it with our `getPopularMovies` function:
+```jsx
+const movies = [
+  { id: 1, title: "The Matrix", release_date: "1999", url: null },
+  { id: 2, title: "Back to the Future", release_date: "1985", url: null },
+  { id: 3, title: "The Shawshank Redemption", release_date: "1994", url: null },
+  { id: 4, title: "The Godfather", release_date: "1972", url: null },
+  { id: 5, title: "The Dark Knight", release_date: "2008", url: null },
+  { id: 6, title: "Pulp Fiction", release_date: "1994", url: null },
+  { id: 7, title: "Forrest Gump", release_date: "1994", url: null },
+  { id: 8, title: "Inception", release_date: "2010", url: null },
+]
+```
+
+becomes:
+```jsx
+const movies = getPopularMovies()
+```  
+
+While the above might work, this 
+
 ## The MovieList component
 
 See `MovieList.jsx`  
 
 
-
 ---
-@65/99
+@68/99
