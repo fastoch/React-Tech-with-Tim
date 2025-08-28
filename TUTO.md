@@ -472,12 +472,26 @@ becomes:
 const movies = getPopularMovies()
 ```  
 
-While the above might work, this 
+While the above will actually work, this function will be called **every single time** that anything 
+in this component changes. And we don't to be constantly fetching movies for no reason.  
+
+### The useEffect hook
+
+`useEffect` allows us to add side effects to our functions or to our components, and define when they should run.  
+
+In our case, we want `getPopularMovies` to run only once, when the component is rendered for the first time.  
+
+First, we need to import the hook: `import { useEffect } from 'react'`  
+Then, we're going to store our movies in a state: `const [movies, setMovies] = useState([])`  
+
+After that, we can declare our `useEffect` hook.  
+The syntax is: `useEffect(() => {}, [])`  
+As you can see, useEffect has 2 parameters: a function and an array (a "dependency array").  
+The function that we pass to useEffect will be called when a change occurs int the array.  
+
+
 
 ## The MovieList component
 
 See `MovieList.jsx`  
 
-
----
-@68/99
