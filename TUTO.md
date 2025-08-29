@@ -564,3 +564,7 @@ And for that, we'll use another React feature called `Context`.
 
 A `context` allows a state to be globally available to any component that's within the provided context.  
 
+- first, create a new folder named `contexts` inside the `src` folder
+- inside this contexts folder, create a file named `MovieContext.jsx`
+
+check comments in this file to see how it works
