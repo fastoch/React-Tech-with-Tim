@@ -553,3 +553,14 @@ const handleSearch = async (e) => {
   setSearchQuery('')
 }
 ```
+
+## Making the Favorite button work
+
+We need to make our favorite movies list persist.  
+And for that we will use something called **local storage**.  
+
+We also need to share the `isFavorite` state of our movies between the Home and Favorites pages.  
+And for that, we'll use another React feature called `Context`.  
+
+A `context` allows a state to be globally available to any component that's within the provided context.  
+
