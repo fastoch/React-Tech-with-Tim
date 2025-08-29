@@ -524,3 +524,32 @@ In the MovieCard component, we update the `<img>` element as follows:
 
 ## Making the search field actually work
 
+In the Home component, we need to modify the `handleSearch` method so it looks like that:
+```tsx
+const handleSearch = async (e) => {
+  // prevents the page from reloading when we submit the form
+  e.preventDefault()  
+  // first, make sure the search query is not an empty string
+  if (searchQuery.trim() === '') {
+    return
+  }
+  // also make sure we're not already searching for movies
+  if (loading) {
+    return
+  }
+  // then, use the searchMovies method declared in /services/api.js
+  setLoading(true)
+  try {
+    const searchResults = await searchMovies(searchQuery)
+    setMovies(searchResults)
+    setError(null) // clear any previous error
+  } catch (error) {
+    console.log(error)
+    setError("Failed to search movies...")
+  } finally {
+    setLoading(false)
+  }
+  // clear the search field after clicking the Search button (optional)
+  setSearchQuery('')
+}
+```

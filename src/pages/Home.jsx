@@ -24,9 +24,30 @@ const Home = () => {
     loadPopularMovies()
   }, [])
 
-  const handleSearch = (e) => {
-    e.preventDefault()  // prevents the page from refreshing when we submit the form
-    alert(`Searching for ${searchQuery}`)
+  const handleSearch = async (e) => {
+    // prevents the page from reloading when we submit the form
+    e.preventDefault()  
+    // first, make sure the search query is not an empty string
+    if (searchQuery.trim() === '') {
+      return
+    }
+    // also make sure we're not already searching for movies
+    if (loading) {
+      return
+    }
+    // then, use the searchMovies method declared in /services/api.js
+    setLoading(true)
+    try {
+      const searchResults = await searchMovies(searchQuery)
+      setMovies(searchResults)
+      setError(null) // clear any previous error
+    } catch (error) {
+      console.log(error)
+      setError("Failed to search movies...")
+    } finally {
+      setLoading(false)
+    }
+    // clear the search field after clicking the Search button (optional)
     setSearchQuery('')
   }
 
