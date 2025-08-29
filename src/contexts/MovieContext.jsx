@@ -8,7 +8,7 @@ export const useMovieContext = () => useContext(MovieContext)
 
 // finally, we create the provider 
 export const MovieProvider = ({children}) => {
-  // here goes the logic related to the favorite movies
+  // here goes the logic related to the favorite movies (until the return statement)
   const [favorites, setFavorites] = useState([])
 
   // when the page first loads, check localStorage and update the favorites state  
@@ -23,6 +23,18 @@ export const MovieProvider = ({children}) => {
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites))
   }, [favorites])
+
+  const addToFavorites = (movie) => {
+    setFavorites([...favorites, movie])
+  }
+
+  const removeFromFavorites = (movieId) => {
+    setFavorites(favorites.filter((movie) => movie.id !== movieId))
+  }
+
+  const isFavorite = (movieId) => {
+    return favorites.some((movie) => movie.id === movieId)
+  }
 
   return <MovieContext.Provider>{children}</MovieContext.Provider>
 }
