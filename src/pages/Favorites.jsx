@@ -1,11 +1,25 @@
 import '../css/Favorites.css'
+import { useMovieContext } from '../contexts/MovieContext'
+import MovieCard from '../components/MovieCard'
 
 const Favorites = () => {
-  return (
-    <div className='favorites-empty'>
-      <h2>No favorite movies yet</h2>
-      <p>Start adding movies to your favorites</p> 
-      <p>and they'll show up here</p>
+  const { favorites } = useMovieContext()
+
+  // if there are favorites, show them
+  return favorites.length > 0 ? (
+    <div className="favorites">
+      <h1 className="favorites-title">Your Favorite Movies</h1>
+      <div className="movies-grid">
+        {favorites.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
+    </div>
+  // if there are no favorites, show a message
+  ) : (
+    <div className="favorites-empty">
+      <h2>You have no favorite movies yet.</h2>
+      <p>Click the heart icon on a movie to add it to your favorites!</p>
     </div>
   )
 }

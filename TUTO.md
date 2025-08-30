@@ -596,7 +596,10 @@ and the methods provided by the context through the `value` (check `MovieContext
 
 ### Using MovieContext inside the MovieCard component
 
-1. `import { useMovieContext } from '../contexts/MovieContext'`
+1. First, we import the useContext method:
+```jsx
+import { useMovieContext } from '../contexts/MovieContext'
+```
 2. Let's use the state and methods provided by our context:
 ```jsx
 const MovieCard = ({movie}) => {
@@ -607,3 +610,33 @@ const MovieCard = ({movie}) => {
 ```jsx
 <button className={`favorite-btn ${favorite ? 'active' : ''}`}  onClick={onLike}>🤍</button>
 ```
+4. we update the `onFavoriteClick` method:
+```jsx
+const onFavoriteClick = (e) => {
+  e.preventDefault()
+  if (favorite) {
+    removeFromFavorites(movie.id)
+  } else {
+    addToFavorites(movie)
+  }
+}
+```  
+
+**Note**: The `e.preventDefault()` is there in case the MovieCard is a link, in which case the button click 
+would redirect the user to a new page.
+
+## Adding a movie to the Favorites page when the button is clicked
+
+1. First, we import the useContext method and the MovieCard component:
+```jsx
+import { useMovieContext } from '../contexts/MovieContext'
+import MovieCard from '../components/MovieCard'
+```
+2. Then, we use the state provided by MovieContext:
+```jsx
+const { favorites } = useMovieContext()
+```
+3. check `Favorites.jsx` for the rest of the code.  
+
+
+
