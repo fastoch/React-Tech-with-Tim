@@ -559,12 +559,47 @@ const handleSearch = async (e) => {
 We need to make our favorite movies list persist.  
 And for that we will use something called **local storage**.  
 
-We also need to share the `isFavorite` state of our movies between the Home and Favorites pages.  
+We also need to share the `isFavorite` state of our movies with both the Home and Favorites pages.  
 And for that, we'll use another React feature called `Context`.  
 
-A `context` allows a state to be globally available to any component that's within the provided context.  
+A `context` allows data (such as a state) to be globally available to any component that's within the provided context.  
 
 - first, create a new folder named `contexts` inside the `src` folder
 - inside this contexts folder, create a file named `MovieContext.jsx`
 
-check comments in this file to see how it works
+Check comments in `MovieContext.jsx` to see how it works.  
+
+Then, to use that context we've created, we need to modify `App.jsx`:
+- first: 
+```jsx
+import { MovieContextProvider } from './contexts/MovieContext'
+```
+- in the return statement, replace the parent div with `<MovieProvider>`:
+```jsx
+function App() {
+
+  return (
+    <MovieProvider>
+      <NavBar />
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/favorites" element={<Favorites />} />
+        </Routes>
+      </main>
+    </MovieProvider>
+  )
+}
+```
+Now that we've nested all these components inside `<MovieProvider>`, they can access the state (`favorites`)
+and the methods provided by the context through the `value` (check `MovieContext.jsx` for more details).  
+
+### Using MovieContext inside the MovieCard component
+
+1. `import { useMovieContext } from '../contexts/MovieContext'`
+2. 
+```jsx
+const MovieCard = ({movie}) => {
+  const { isFavorite, addToFavorites, removeFromFavorites } = useMovieContext()
+```
+3. 

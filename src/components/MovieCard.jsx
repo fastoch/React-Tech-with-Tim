@@ -1,6 +1,10 @@
 import '../css/MovieCard.css'  
+import { useMovieContext } from '../contexts/MovieContext'
 
 const MovieCard = ({movie}) => {
+  const { isFavorite, addToFavorites, removeFromFavorites } = useMovieContext()
+
+
   const onLike = () => {
     alert("Liked")
   }

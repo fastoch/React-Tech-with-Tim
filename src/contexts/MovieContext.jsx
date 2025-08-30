@@ -6,9 +6,11 @@ const MovieContext = createContext()
 // then, we create the hook to grab the value that will be passed to the provider
 export const useMovieContext = () => useContext(MovieContext)
 
-// finally, we create the provider 
+// finally, we create the provider and we pass it a value
 export const MovieProvider = ({children}) => {
   // here goes the logic related to the favorite movies (until the return statement)
+
+  // state variable to store the favorite movies
   const [favorites, setFavorites] = useState([])
 
   // when the page first loads, check localStorage and update the favorites state  
@@ -40,11 +42,12 @@ export const MovieProvider = ({children}) => {
 
   const value = { favorites, addToFavorites, removeFromFavorites, isFavorite }
 
+  // The value provided allows children components to access the above state and methods
   return <MovieContext.Provider value={value}>{children}</MovieContext.Provider>
 }
 
 /**
- * The provider will provide data (value) to any of the components that are nested inside of it
+ * The provider provides data (value) to any of the components that are nested inside of it (its children)
  */
 
 /**
