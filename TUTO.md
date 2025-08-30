@@ -597,9 +597,13 @@ and the methods provided by the context through the `value` (check `MovieContext
 ### Using MovieContext inside the MovieCard component
 
 1. `import { useMovieContext } from '../contexts/MovieContext'`
-2. 
+2. Let's use the state and methods provided by our context:
 ```jsx
 const MovieCard = ({movie}) => {
   const { isFavorite, addToFavorites, removeFromFavorites } = useMovieContext()
+  const favorite = isFavorite(movie.id)
 ```
-3. 
+3. The button will turn red if the movie is a favorite:
+```jsx
+<button className={`favorite-btn ${favorite ? 'active' : ''}`}  onClick={onLike}>🤍</button>
+```
